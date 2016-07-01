@@ -1,0 +1,28 @@
+FROM alpine:3.4
+MAINTAINER Josh Elsasser <josh@elsasser.ca>
+EXPOSE 6667
+
+ADD docker-entrypoint.sh /entrypoint.sh
+
+ENV BITLBEE_VERSION 3.4.2-r1
+
+RUN apk update \
+    apk add --no-cache sudo \
+    bitlbee-facebook \
+    bitlbee-otr \
+    && rm -rf /var/cache/apk/* \
+    && mkdir /data
+
+ADD bitlbee.conf.default /etc/bitlbee/bitlbee.conf.default
+RUN chmod 644 /etc/bitlbee/bitlbee.conf.default
+
+ADD motd.txt.default /etc/bitlbee/motd.txt.default
+RUN chmod 644 /etc/bitlbee/motd.txt.default
+
+RUN adduser -H -D bitlbee
+RUN mkdir -p /var/lib/bitlbee/ /var/run/bitlbee
+RUN chown -R bitlbee /var/lib/bitlbee/ /var/run/bitlbee
+
+VOLUME /data
+ENTRYPOINT [ "/entrypoint.sh" ]
+CMD [""]
