@@ -1,16 +1,10 @@
 {
-    "family": "irc-services",
+    "family": "mod-services",
     "volumes": [
         {
             "name": "znc-data",
             "host": {
                 "sourcePath": "/data/znc"
-            }
-        },
-        {
-            "name": "bitlbee-data",
-            "host": {
-                "sourcePath": "/data/bitlbee"
             }
         }
     ],
@@ -37,34 +31,14 @@
                     "containerPath": "/data"
                 }
             ],
-            "logConfiguration": {
+            "logConfiugration": [
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-group": "awslogs-irc",
-                    "awslogs-region": "us-west-2"
-                }
-            },
-            "essential": true
-        },
-        {
-            "name": "bitlbee",
-            "image": "jaelsasser/bitlbee",
-            "cpu": 10,
-            "memory": 500,
-            "mountPoints": [
-                {
-                    "sourceVolume": "bitlbee-data",
-                    "containerPath": "/data"
+                    "awslogs-region": "us-east-1"
                 }
             ],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "awslogs-irc",
-                    "awslogs-region": "us-west-2"
-                }
-            },
-            "essential": false
+            "essential": true
         }
     ]
 }
