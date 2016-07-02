@@ -1,6 +1,6 @@
 FROM alpine:3.4
 MAINTAINER Josh Elsasser <josh@elsasser.ca>
-EXPOSE 6667
+EXPOSE 80 6667
 
 ADD docker-entrypoint.sh /entrypoint.sh
 

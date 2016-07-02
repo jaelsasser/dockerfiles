@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:latest
 MAINTAINER Josh Elsasser <josh@elsasser.ca>
 EXPOSE 6667
 
@@ -6,10 +6,10 @@ ADD docker-entrypoint.sh /entrypoint.sh
 
 ENV BITLBEE_VERSION 3.4.2-r1
 
-RUN apk update \
-    apk add --no-cache sudo \
-    bitlbee-facebook \
-    bitlbee-otr \
+RUN apk add --no-cache sudo \
+      bitlbee=$BITLBEE_VERSION \
+      bitlbee-otr=$BITLBEE_VERSION \
+      bitlbee-facebook \
     && rm -rf /var/cache/apk/* \
     && mkdir /data
 
