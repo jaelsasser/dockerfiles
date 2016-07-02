@@ -1,6 +1,6 @@
 FROM alpine:latest
 MAINTAINER Josh Elsasser <josh@elsasser.ca>
-EXPOSE 6667
+EXPOSE 6667 6697
 
 ENV BITLBEE_VERSION 3.4.2-r1
 

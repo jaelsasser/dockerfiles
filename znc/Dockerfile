@@ -1,6 +1,6 @@
 FROM alpine:3.4
 MAINTAINER Josh Elsasser <josh@elsasser.ca>
-EXPOSE 5000 6667
+EXPOSE 5000 6667 6697
 
 ENV ZNC_VERSION 1.6.3-r2
 
