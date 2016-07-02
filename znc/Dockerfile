@@ -1,8 +1,6 @@
 FROM alpine:3.4
 MAINTAINER Josh Elsasser <josh@elsasser.ca>
-EXPOSE 80 6667
-
-ADD docker-entrypoint.sh /entrypoint.sh
+EXPOSE 5000 6667
 
 ENV ZNC_VERSION 1.6.3-r2
 
@@ -18,14 +16,16 @@ RUN apk add --no-cache \
     && rm -rf /var/cache/apk/* \
     && mkdir /data
 
-ADD znc.conf.default /var/lib/znc/znc.conf.default
-RUN chmod 644 /var/lib/znc/znc.conf.default
-
 RUN apk add --no-cache make g++ pkgconfig zlib-dev \
       perl-dev openssl-dev cyrus-sasl-dev python-dev c-ares-dev swig \
       gettext-dev tcl-dev autoconf automake python3-dev findutils \
     && update-ca-certificates \
     && rm -rf /var/cache/apk/*
+
+ADD znc.conf.default /var/lib/znc/znc.conf.default
+RUN chmod 644 /var/lib/znc/znc.conf.default
+
+ADD docker-entrypoint.sh /entrypoint.sh
 
 VOLUME /data
 ENTRYPOINT ["/entrypoint.sh"]

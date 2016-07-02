@@ -11,7 +11,7 @@
 Version = 1.6.3
 LoadModule = webadmin
 
-<Listener w>
+<Listener irc>
         AllowWeb = false
         AllowIRC = true
         Port = 6667
@@ -20,13 +20,13 @@ LoadModule = webadmin
         SSL = false
 </Listener>
 
-<Listener w>
+<Listener web>
         AllowWeb = true
         AllowIRC = false
-        Port = 80
+        Port = 5000
         IPv4 = true
         IPv6 = true
-        SSL = true
+        SSL = false
 </Listener>
 
 <User admin>
