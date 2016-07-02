@@ -9,7 +9,6 @@ ENV BITLBEE_VERSION 3.4.2-r1
 RUN apk add --no-cache sudo \
       bitlbee=$BITLBEE_VERSION \
       bitlbee-otr=$BITLBEE_VERSION \
-      bitlbee-facebook \
     && rm -rf /var/cache/apk/* \
     && mkdir /data
 
